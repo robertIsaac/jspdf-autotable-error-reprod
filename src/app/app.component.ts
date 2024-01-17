@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
@@ -9,6 +9,13 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'jspdf-autotable-error-reprod';
+export class AppComponent implements OnInit {
+  private autoTable: unknown;
+  autoTableType?: string;
+
+  async ngOnInit() {
+    this.autoTable = await import('jspdf-autotable').then((library) => library.default);
+    console.log(this.autoTable);
+    this.autoTableType = typeof this.autoTable;
+  }
 }
