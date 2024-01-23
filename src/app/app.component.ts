@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   autoTableType?: string;
 
   async ngOnInit() {
-    this.autoTable = await import('jspdf-autotable').then((library) => library.default);
+    this.autoTable = await import('jspdf-autotable/es').then((library) => library.default);
     console.log(this.autoTable);
     this.autoTableType = typeof this.autoTable;
   }
